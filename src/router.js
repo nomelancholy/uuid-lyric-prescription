@@ -1,10 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import Root from "./components/Root";
+import Welcome from "./components/Welcome";
+import Examine from "./components/Examine";
+import Prescribe from "./components/Prescribe";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Welcome />,
+  },
+  {
+    path: "examine",
+    element: <Examine />,
+  },
+  {
+    path: "prescribe/:type",
+    element: <Prescribe />,
   },
 ]);
 
