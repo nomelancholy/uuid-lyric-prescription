@@ -3,19 +3,22 @@ import {
   Button,
   Container,
   Heading,
-  ListItem,
   Stack,
-  UnorderedList,
+  StackDivider,
+  VStack,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Prescription from "../json/Prescription.json";
 
 const Prescribe = () => {
   let { type } = useParams();
 
-  console.log("type :>> ", type);
-  console.log("Prescription :>> ", Prescription[type]);
-  const result = Prescription[type];
+  const result = Prescription[type.toLowerCase()];
+  const naviagte = useNavigate();
+
+  const handleRetry = () => {
+    naviagte("/");
+  };
 
   return (
     <Box w={"100%"}>
@@ -24,14 +27,36 @@ const Prescribe = () => {
           <Heading>지금 당신에게 필요한 건 UUID의 {type} 입니다~</Heading>
           <Heading>{result.type}</Heading>
           {/* To-do : https://alvarotrigo.com/blog/css-text-animations/ 가사 애니메이션 */}
-          <UnorderedList>
+          <VStack
+            divider={
+              <StackDivider
+                borderColor="gray.200"
+                spacing={6}
+                align="stretch"
+              />
+            }
+          >
             {result.verse.map((v, i) => (
-              <ListItem key={i}>{v}</ListItem>
+              <Box h={"40px"} key={i}>
+                {v}
+              </Box>
             ))}
-          </UnorderedList>
+          </VStack>
           {/* To-do : SNS 공유 기능 */}
+
+          <Button onClick={handleRetry}>다시 하기</Button>
+
           <Button>공유하기</Button>
-          <Button>UUID 들으러 가기</Button>
+
+          <Button>
+            <a
+              href="https://luminant.kr/ICQ671qr_0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              UUID 들으러 가기
+            </a>
+          </Button>
         </Stack>
       </Container>
     </Box>

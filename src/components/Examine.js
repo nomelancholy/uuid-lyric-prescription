@@ -11,24 +11,38 @@ import { useNavigate } from "react-router-dom";
 import Questions from "../json/Questionnaire.json";
 
 const Examine = () => {
+  // To-do : 전체 css ( transition 효과들 추가 )
   const [stage, setStage] = useState(0);
   const [nowQuestion, setNowQuestion] = useState(Questions[0]);
+
+  const [resultObj, setResultObj] = useState({
+    verse1: 0,
+    verse2: 0,
+    verse3: 0,
+    hook: 0,
+  });
+
   const naviagte = useNavigate();
 
   useEffect(() => {
     setNowQuestion(Questions[stage]);
   }, [stage]);
 
-  console.log("nowQuestion :>> ", nowQuestion);
-
   const goResultPage = () => {
-    // to-do : map 생성 후 결과 따라 페이지 이동
-    naviagte("/prescribe/Verse1");
-    console.log("call result page");
+    const prescribeType = Object.keys(resultObj).reduce((a, b) =>
+      resultObj[a] > resultObj[b] ? a : b
+    );
+
+    naviagte(`/prescribe/${prescribeType}`);
   };
 
   const handleClick = (type) => {
-    console.log(type);
+    setResultObj((prev) => {
+      return {
+        ...prev,
+        [type]: prev[type] + 1,
+      };
+    });
 
     if (stage + 1 === Questions.length) {
       goResultPage();
