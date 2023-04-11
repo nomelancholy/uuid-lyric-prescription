@@ -3,7 +3,6 @@ import {
   Button,
   Center,
   Container,
-  Heading,
   Img,
   Link,
   Spinner,
@@ -34,12 +33,12 @@ const Welcome = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 700);
+    }, 2000);
   }, []);
 
   return (
-    <Box w="100%" bg={"gray.100"}>
-      <Container height={"100vh"} bg={"white"}>
+    <Box w="100%" h={"100vh"} bg={"twitter.200"}>
+      <Container w={"80%"} h={"100%"} bg={"gray.100"}>
         {isLoading ? (
           <Stack
             width={"100%"}
@@ -48,38 +47,46 @@ const Welcome = () => {
             justifyContent={"center"}
             alignItems={"center"}
           >
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
+            <Center>
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+              />
+            </Center>
           </Stack>
         ) : (
           <>
-            <Img src={uuidCover} paddingTop={"18%"} px={"5%"} />
+            <Img src={uuidCover} px={"1em"} py={["20%", "10%"]} />
+
             <Center>
-              <Heading pt="18%">UUID 가사 처방전</Heading>
-            </Center>
-            <Center>
-              <Stack spacing={1} py={"8%"} textAlign={"center"}>
-                <Text fontSize={"md"}>
+              <Stack spacing={1} py={["16%", "12%"]} textAlign={"center"}>
+                <Text fontSize={["md", "2xl"]}>지금 당신에게 필요한</Text>
+
+                <Text fontSize={["md", "2xl"]}>
                   <Link
                     href="https://luminant.kr/ICQ671qr_0"
                     color={"twitter.600"}
                     isExternal
                   >
                     UUID
-                  </Link>{" "}
-                  가사 중
+                  </Link>
+                  가사를 처방해드립니다
                 </Text>
-                <Text fontSize={"md"}>지금 당신에게 필요한 부분을</Text>
-                <Text fontSize={"md"}>처방해드릴게요</Text>
               </Stack>
             </Center>
-            <Center paddingY={"8%"}>
-              <Button paddingY={"6%"} paddingX={"8%"} onClick={handleClick}>
+            <Center paddingY={["8%", "4%"]}>
+              <Button
+                bg={"twitter.400"}
+                py={["10%", "6%"]}
+                paddingX={"8%"}
+                onClick={handleClick}
+                fontSize={["md", "2xl"]}
+                color={"whiteAlpha.800"}
+                _hover={{ bg: "twitter.100", color: "gray.500" }}
+              >
                 진단 받으러 가기
               </Button>
             </Center>
