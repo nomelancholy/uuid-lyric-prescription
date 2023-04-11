@@ -43,6 +43,7 @@ const Examine = () => {
   const [nowQuestion, setNowQuestion] = useState(Questions[0]);
 
   const [resultObj, setResultObj] = useState({
+    verse1: 0,
     verse2: 0,
     verse3: 0,
     hook: 0,
