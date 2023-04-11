@@ -1,14 +1,41 @@
 import {
   Box,
-  Button,
   Container,
   Heading,
   Progress,
+  Radio,
+  RadioGroup,
   Stack,
+  Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Questions from "../json/Questionnaire.json";
+
+const colorScale = ["#D01B1B", "#FF4242", "#FFFFFF", "#95D2EC", "#47abd8"];
+
+const answers = [
+  {
+    score: -2,
+    content: "전혀 그렇지 않다",
+  },
+  {
+    score: -1,
+    content: "그렇지 않다",
+  },
+  {
+    score: 0,
+    content: "중립",
+  },
+  {
+    score: 1,
+    content: "그렇다",
+  },
+  {
+    score: 2,
+    content: "매우 그렇다",
+  },
+];
 
 const Examine = () => {
   // To-do : 전체 css ( transition 효과들 추가 )
@@ -16,7 +43,6 @@ const Examine = () => {
   const [nowQuestion, setNowQuestion] = useState(Questions[0]);
 
   const [resultObj, setResultObj] = useState({
-    verse1: 0,
     verse2: 0,
     verse3: 0,
     hook: 0,
@@ -36,11 +62,11 @@ const Examine = () => {
     naviagte(`/prescribe/${prescribeType}`);
   };
 
-  const handleClick = (type) => {
+  const handleAnswer = ({ type, score }) => {
     setResultObj((prev) => {
       return {
         ...prev,
-        [type]: prev[type] + 1,
+        [type]: prev[type] + score,
       };
     });
 
@@ -52,23 +78,55 @@ const Examine = () => {
   };
 
   return (
-    <Box w={"100%"}>
-      <Container h={"100vh"}>
-        <Progress
-          value={stage * (100 / Questions.length)}
-          size="lg"
-          hasStripe={false}
-        />
-        <>
-          <Heading size={"md"}>{nowQuestion.question}</Heading>
-          <Stack>
-            {nowQuestion.answers.map((a, index) => (
-              <Button key={a.type} onClick={() => handleClick(a.type)}>{`${
-                index + 1
-              }. ${a.content}`}</Button>
-            ))}
-          </Stack>
-        </>
+    <Box w={"100%"} bg={"twitter.200"}>
+      <Progress
+        bg={"twitter.400"}
+        h={["4", "6", "8"]}
+        value={stage * (100 / Questions.length)}
+        size="lg"
+        hasStripe={false}
+      />
+      <Container
+        bg={"twitter.100"}
+        w={"80%"}
+        h={["calc(100vh - 1em)", "calc(100vh - 2em)"]}
+      >
+        <Stack height={"100%"} justifyContent={"center"} alignItems={"center"}>
+          <Heading
+            color={"gray.500"}
+            size={"lg"}
+            width={"100%"}
+            textAlign={"center"}
+            mt={"-8"}
+            pb={["16%", "20%"]}
+          >
+            {nowQuestion.question}
+          </Heading>
+
+          <RadioGroup>
+            <Stack direction={"row"}>
+              <Text fontSize={["3xl", "4xl", "5xl"]} pr={[4, 6, 8]}>
+                🙅‍♂️
+              </Text>
+              {answers.map((answer, index) => (
+                <Radio
+                  size={["sm", "md", "lg"]}
+                  bgColor={colorScale[index]}
+                  pr={[4, 6, 8]}
+                  value={answer.score}
+                  key={`${nowQuestion.type}-${nowQuestion.id}-${answer.score}`}
+                  onChange={() =>
+                    handleAnswer({
+                      type: nowQuestion.type,
+                      score: answer.score,
+                    })
+                  }
+                />
+              ))}
+              <Text fontSize={["3xl", "4xl", "5xl"]}>🙆‍♂️</Text>
+            </Stack>
+          </RadioGroup>
+        </Stack>
       </Container>
     </Box>
   );
