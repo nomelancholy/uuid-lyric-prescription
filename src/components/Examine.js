@@ -96,9 +96,9 @@ const Examine = () => {
   }, [isCompleted]);
 
   return (
-    <Box w={"100%"} bg={"twitter.200"}>
+    <Box w={"100%"} bg={"box"}>
       {isAnalyzing ? (
-        <Container w={"80%"} h={"100vh"} bg={"gray.100"}>
+        <Container w={"80%"} h={"100vh"} bg={"container"}>
           <Stack
             width={"100%"}
             height={"100%"}
@@ -108,12 +108,14 @@ const Examine = () => {
           >
             <Center>
               <VStack>
-                <Heading pb={"20%"}>결과 분석중입니다</Heading>
+                <Heading color={"darkText"} pb={"20%"}>
+                  결과 분석중입니다
+                </Heading>
                 <Spinner
                   thickness="4px"
                   speed="0.65s"
                   emptyColor="gray.200"
-                  color="blue.500"
+                  color="box"
                   size="xl"
                 />
               </VStack>
@@ -123,14 +125,14 @@ const Examine = () => {
       ) : (
         <>
           <Progress
-            bg={"twitter.400"}
+            bg={"twitter.300"}
             h={["4", "6", "8"]}
             value={stage * (100 / Questions.length)}
             size="lg"
             hasStripe={false}
           />
           <Container
-            bg={"twitter.100"}
+            bg={"container"}
             w={"80%"}
             h={["calc(100vh - 1em)", "calc(100vh - 2em)"]}
           >
@@ -140,7 +142,7 @@ const Examine = () => {
               alignItems={"center"}
             >
               <Heading
-                color={"gray.500"}
+                color={"darkText"}
                 size={"lg"}
                 width={"80%"}
                 textAlign={"center"}

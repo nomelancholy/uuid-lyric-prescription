@@ -51,17 +51,21 @@ const Prescribe = () => {
   };
 
   return (
-    <Box w={"100%"} minH={"100vh"} bg={"twitter.200"}>
-      <Container width={"80%"} minH={"100vh"} height={"100%"} bg={"gray.100"}>
+    <Box w={"100%"} minH={"100vh"} bg={"box"}>
+      <Container width={"80%"} minH={"100vh"} height={"100%"} bg={"container"}>
         <Center>
           <Stack spacing={1} py={["16%", "12%"]} textAlign={"center"}>
-            <Heading fontSize={["lg", "xl", "2xl"]} pb={["10%", "14%"]}>
+            <Heading
+              color={"darkText"}
+              fontSize={["lg", "xl", "2xl"]}
+              pb={["10%", "14%"]}
+            >
               <Text pb={"2%"}>{result?.type}</Text>
-              <Text pb={"2%"}> 당신에게 필요한 건</Text>
+              <Text pb={"2%"}> 당신에게 필요한 가사는</Text>
               <Text>UUID의 {type} 입니다</Text>
             </Heading>
             <VStack
-              divider={<StackDivider borderColor="gray.200" align="stretch" />}
+              divider={<StackDivider borderColor="box" align="stretch" />}
               spacing={"2"}
             >
               {result?.verse.map((v, i) => {
@@ -77,6 +81,7 @@ const Prescribe = () => {
                     justifyContent={"center"}
                     alignItems={"center"}
                     fontSize={["sm", "md"]}
+                    color={"darkText"}
                   >
                     <AnimatedText
                       type="words"
@@ -101,7 +106,12 @@ const Prescribe = () => {
             </VStack>
             {/* To-do : SNS 공유 기능 */}
             <VStack pt={"20%"}>
-              <Button>
+              <Button
+                bg="box"
+                color={"brightText"}
+                minW={["70%", "50%"]}
+                _hover={{ bg: "twitter.100", color: "darkText" }}
+              >
                 <a
                   href="https://luminant.kr/ICQ671qr_0"
                   target="_blank"
@@ -114,12 +124,26 @@ const Prescribe = () => {
                     alignItems: "center",
                   }}
                 >
-                  UUID 전곡 들으러 가기
+                  UUID 들으러 가기
                 </a>
               </Button>
-              <Button onClick={handleRetry}>테스트 다시 하기</Button>
-
-              <Button>테스트 공유하기</Button>
+              <Button
+                bg={"box"}
+                color={"brightText"}
+                minW={["70%", "50%"]}
+                _hover={{ bg: "twitter.100", color: "darkText" }}
+              >
+                테스트 공유하기
+              </Button>
+              <Button
+                bg={"box"}
+                color={"brightText"}
+                minW={["70%", "50%"]}
+                _hover={{ bg: "twitter.100", color: "darkText" }}
+                onClick={handleRetry}
+              >
+                테스트 다시 하기
+              </Button>
             </VStack>
           </Stack>
         </Center>

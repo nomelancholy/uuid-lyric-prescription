@@ -33,12 +33,12 @@ const Welcome = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1500);
   }, []);
 
   return (
-    <Box w="100%" h={"100vh"} bg={"twitter.200"}>
-      <Container w={"80%"} h={"100%"} bg={"gray.100"}>
+    <Box w="100%" h={"100vh"} bg={"box"}>
+      <Container w={"80%"} h={"100%"} bg={"container"}>
         {isLoading ? (
           <Stack
             width={"100%"}
@@ -64,28 +64,27 @@ const Welcome = () => {
             <Center>
               <Stack spacing={1} py={["16%", "12%"]} textAlign={"center"}>
                 <Text fontSize={["md", "2xl"]}>지금 당신에게 필요한</Text>
-
                 <Text fontSize={["md", "2xl"]}>
                   <Link
                     href="https://luminant.kr/ICQ671qr_0"
-                    color={"twitter.600"}
+                    color={"box"}
                     isExternal
                   >
                     UUID
-                  </Link>
+                  </Link>{" "}
                   가사를 처방해드립니다
                 </Text>
               </Stack>
             </Center>
             <Center paddingY={["8%", "4%"]}>
               <Button
-                bg={"twitter.400"}
+                bg={"box"}
                 py={["10%", "6%"]}
                 paddingX={"8%"}
                 onClick={handleClick}
                 fontSize={["md", "2xl"]}
-                color={"whiteAlpha.800"}
-                _hover={{ bg: "twitter.100", color: "gray.500" }}
+                color={"brightText"}
+                _hover={{ bg: "twitter.100", color: "darkText" }}
               >
                 진단 받으러 가기
               </Button>

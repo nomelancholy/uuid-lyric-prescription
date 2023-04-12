@@ -17,8 +17,8 @@ const ErrorPage = () => {
   };
 
   return (
-    <Box w={"100%"} h={"100vh"} bg={"twitter.200"}>
-      <Container w={"80%"} h={"100%"} bg={"gray.100"}>
+    <Box w={"100%"} h={"100vh"} bg={"box"}>
+      <Container w={"80%"} h={"100%"} bg={"container"}>
         <Stack
           width={"100%"}
           height={"100%"}
@@ -27,7 +27,7 @@ const ErrorPage = () => {
           alignItems={"center"}
           spacing={"20"}
         >
-          <Heading size={["sm", "md", "lg"]}>
+          <Heading size={["sm", "md", "lg"]} color="darkText">
             <Text textAlign={"center"} pb={"4"}>
               미안하다
             </Text>
@@ -43,7 +43,17 @@ const ErrorPage = () => {
               allowFullScreen
             />
           </AspectRatio>
-          <Button onClick={handleRetry}>테스트 하러 돌아가기</Button>
+          <Button
+            bg={"box"}
+            color={"brightText"}
+            fontSize={["md", "2xl"]}
+            _hover={{ bg: "twitter.100", color: "darkText" }}
+            onClick={handleRetry}
+            py={["10%", "6%"]}
+            minW={["70%", "50%"]}
+          >
+            테스트 하러 돌아가기
+          </Button>
         </Stack>
       </Container>
     </Box>
