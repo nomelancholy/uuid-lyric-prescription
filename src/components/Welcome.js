@@ -59,7 +59,7 @@ const Welcome = () => {
           </Stack>
         ) : (
           <>
-            <Img src={uuidCover} px={"1em"} py={["20%", "10%"]} />
+            <Img src={uuidCover} px={"1em"} py={["20%", "16%"]} />
 
             <Center>
               <Stack spacing={1} py={["16%", "12%"]} textAlign={"center"}>

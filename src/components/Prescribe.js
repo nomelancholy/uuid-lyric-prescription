@@ -4,6 +4,7 @@ import {
   Center,
   Container,
   Heading,
+  IconButton,
   Stack,
   StackDivider,
   Text,
@@ -13,6 +14,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import Prescription from "../json/Prescription.json";
 import { useEffect, useState } from "react";
 import AnimatedText from "react-animated-text-content";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  TelegramIcon,
+} from "react-share";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink, faComment } from "@fortawesome/free-solid-svg-icons";
 
 const Prescribe = () => {
   let { type } = useParams();
@@ -50,6 +61,17 @@ const Prescribe = () => {
 
   const handleRetry = () => {
     naviagte("/");
+  };
+
+  const handleCopyClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        "https://uuid-lyrics-prescription.netlify.app/"
+      );
+      alert("클립보드에 링크가 복사되었습니다.");
+    } catch (e) {
+      alert("복사에 실패하였습니다");
+    }
   };
 
   return (
@@ -107,7 +129,7 @@ const Prescribe = () => {
               })}
             </VStack>
             {/* To-do : SNS 공유 기능 */}
-            <VStack pt={"20%"}>
+            <VStack pt={["10%", "12%"]}>
               <Button
                 bg="box"
                 color={"brightText"}
@@ -129,14 +151,7 @@ const Prescribe = () => {
                   UUID 들으러 가기
                 </a>
               </Button>
-              <Button
-                bg={"box"}
-                color={"brightText"}
-                minW={["70%", "50%"]}
-                _hover={{ bg: "twitter.100", color: "darkText" }}
-              >
-                테스트 공유하기
-              </Button>
+
               <Button
                 bg={"box"}
                 color={"brightText"}
@@ -146,6 +161,44 @@ const Prescribe = () => {
               >
                 테스트 다시 하기
               </Button>
+              <Stack direction={"row"} pt={["6", "12"]}>
+                <FacebookShareButton
+                  url="https://uuid-lyrics-prescription.netlify.app/"
+                  title="공유하기"
+                >
+                  <FacebookIcon size={40} round />
+                </FacebookShareButton>
+                <TwitterShareButton
+                  url="https://uuid-lyrics-prescription.netlify.app/"
+                  title="공유하기"
+                >
+                  <TwitterIcon size={40} round />
+                </TwitterShareButton>
+                <TelegramShareButton
+                  url="https://uuid-lyrics-prescription.netlify.app/"
+                  title="공유하기"
+                >
+                  <TelegramIcon size={40} round />
+                </TelegramShareButton>
+                {/* todo : 아직 카카오 남았다 */}
+                <IconButton
+                  size={"md"}
+                  borderRadius={"full"}
+                  bg={"#FFEA21"}
+                  color={"#3F3035"}
+                  _hover={{ bg: "#F9E81E", color: "#C5AB6A" }}
+                  icon={<FontAwesomeIcon size="xl" icon={faComment} />}
+                />
+                <IconButton
+                  size={"md"}
+                  borderRadius={"full"}
+                  bg={"box"}
+                  color={"brightText"}
+                  _hover={{ bg: "brightText", color: "box" }}
+                  icon={<FontAwesomeIcon size="xl" icon={faLink} />}
+                  onClick={() => handleCopyClipboard()}
+                />
+              </Stack>
             </VStack>
           </Stack>
         </Center>
