@@ -96,7 +96,7 @@ const Examine = () => {
           <Heading
             color={"gray.500"}
             size={"lg"}
-            width={"100%"}
+            width={"80%"}
             textAlign={"center"}
             mt={"-8"}
             pb={["16%", "20%"]}
