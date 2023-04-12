@@ -93,6 +93,7 @@ const Examine = () => {
 
       naviagte(`/prescribe/${prescribeType}`);
     }
+    // eslint-disable-next-line
   }, [isCompleted]);
 
   return (

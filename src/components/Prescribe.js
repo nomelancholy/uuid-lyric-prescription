@@ -36,12 +36,14 @@ const Prescribe = () => {
 
   useEffect(() => {
     checkIsSomethingWrong();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     if (isSomethingWrong) {
       naviagte("/error");
     }
+    // eslint-disable-next-line
   }, [isSomethingWrong]);
 
   const result = Prescription[type.toLowerCase()];
