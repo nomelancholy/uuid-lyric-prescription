@@ -6,11 +6,13 @@ import {
   Heading,
   Stack,
   StackDivider,
+  Text,
   VStack,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import Prescription from "../json/Prescription.json";
 import { useEffect, useState } from "react";
+import AnimatedText from "react-animated-text-content";
 
 const Prescribe = () => {
   let { type } = useParams();
@@ -49,50 +51,76 @@ const Prescribe = () => {
   };
 
   return (
-    <Box w={"100%"} height={"100vh"} bg={"twitter.200"}>
-      <Container width={"80%"} height={"100%"} bg={"gray.100"}>
+    <Box w={"100%"} minH={"100vh"} bg={"twitter.200"}>
+      <Container width={"80%"} minH={"100vh"} height={"100%"} bg={"gray.100"}>
         <Center>
           <Stack spacing={1} py={["16%", "12%"]} textAlign={"center"}>
-            <Heading>지금 당신에게 필요한 건 UUID의 {type} 입니다~</Heading>
-            <Heading>{result?.type}</Heading>
-            {/* To-do : https://alvarotrigo.com/blog/css-text-animations/ 가사 애니메이션 */}
+            <Heading fontSize={["lg", "xl", "2xl"]} pb={["10%", "14%"]}>
+              <Text pb={"2%"}>{result?.type}</Text>
+              <Text pb={"2%"}> 당신에게 필요한 건</Text>
+              <Text>UUID의 {type} 입니다</Text>
+            </Heading>
             <VStack
-              divider={
-                <StackDivider
-                  borderColor="gray.200"
-                  spacing={6}
-                  align="stretch"
-                />
-              }
+              divider={<StackDivider borderColor="gray.200" align="stretch" />}
+              spacing={"2"}
             >
-              {result?.verse.map((v, i) => (
-                <Box h={"40px"} key={i}>
-                  {v}
-                </Box>
-              ))}
+              {result?.verse.map((v, i) => {
+                const intervalRandomNumber = Math.random() * 0.1;
+                const durationRandomNumber = Math.random();
+                const thresholdRandomNumber = Math.random();
+
+                return (
+                  <Box
+                    h={"40px"}
+                    key={i}
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    fontSize={["sm", "md"]}
+                  >
+                    <AnimatedText
+                      type="words"
+                      animation={{
+                        scale: 1.2,
+                        ease: "ease-in-out",
+                      }}
+                      animationType="throw"
+                      interval={intervalRandomNumber}
+                      duration={durationRandomNumber}
+                      tag="p"
+                      className="animated-paragraph"
+                      includeWhiteSpaces
+                      threshold={thresholdRandomNumber}
+                      rootMargin="10%"
+                    >
+                      {v}
+                    </AnimatedText>
+                  </Box>
+                );
+              })}
             </VStack>
             {/* To-do : SNS 공유 기능 */}
+            <VStack pt={"20%"}>
+              <Button>
+                <a
+                  href="https://luminant.kr/ICQ671qr_0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  UUID 전곡 들으러 가기
+                </a>
+              </Button>
+              <Button onClick={handleRetry}>테스트 다시 하기</Button>
 
-            <Button onClick={handleRetry}>테스트 다시 하기</Button>
-
-            <Button>SNS 공유하기</Button>
-
-            <Button>
-              <a
-                href="https://luminant.kr/ICQ671qr_0"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                UUID 들으러 가기
-              </a>
-            </Button>
+              <Button>테스트 공유하기</Button>
+            </VStack>
           </Stack>
         </Center>
       </Container>
