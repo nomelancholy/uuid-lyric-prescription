@@ -75,7 +75,6 @@ const Prescribe = () => {
 
   const handleKakaoShare = () => {
     const kakao = window.Kakao;
-
     kakao.init(process.env.REACT_APP_KAKAO_KEY);
     if (kakao?.isInitialized()) {
       kakao.Share.sendDefault({
