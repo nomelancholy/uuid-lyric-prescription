@@ -45,8 +45,18 @@ const Prescribe = () => {
     }
   };
 
+  const kakaoInit = () => {
+    const script = document.createElement("script");
+    script.src = "https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => document.body.removeChild(script);
+  };
+
   useEffect(() => {
     checkIsSomethingWrong();
+    kakaoInit();
     // eslint-disable-next-line
   }, []);
 
@@ -61,6 +71,26 @@ const Prescribe = () => {
 
   const handleRetry = () => {
     naviagte("/");
+  };
+
+  const handleKakaoShare = () => {
+    const kakao = window.Kakao;
+
+    kakao.init(process.env.REACT_APP_KAKAO_KEY);
+    if (kakao?.isInitialized()) {
+      kakao.Share.sendDefault({
+        objectType: "feed",
+        content: {
+          title: "지금 당신에게 필요한",
+          description: "UUID 가사를 처방해드립니다",
+          imageUrl: "https://i.ibb.co/VCmgvQQ/Take-Knowledge-UUID.jpg",
+          link: {
+            mobileWebUrl: "https://uuid-lyrics-prescription.netlify.app",
+            webUrl: "https://uuid-lyrics-prescription.netlify.app",
+          },
+        },
+      });
+    }
   };
 
   const handleCopyClipboard = async () => {
@@ -180,7 +210,6 @@ const Prescribe = () => {
                 >
                   <TelegramIcon size={40} round />
                 </TelegramShareButton>
-                {/* todo : 아직 카카오 남았다 */}
                 <IconButton
                   size={"md"}
                   borderRadius={"full"}
@@ -188,6 +217,7 @@ const Prescribe = () => {
                   color={"#3F3035"}
                   _hover={{ bg: "#F9E81E", color: "#C5AB6A" }}
                   icon={<FontAwesomeIcon size="xl" icon={faComment} />}
+                  onClick={() => handleKakaoShare()}
                 />
                 <IconButton
                   size={"md"}
