@@ -99,10 +99,10 @@ const Examine = () => {
   return (
     <Box w={"100%"} bg={"box"}>
       {isAnalyzing ? (
-        <Container w={"80%"} h={"100vh"} bg={"container"}>
+        <Container w={"80%"} minH={"100vh"} bg={"container"}>
           <Stack
             width={"100%"}
-            height={"100%"}
+            minH={"100vh"}
             direction="column"
             justifyContent={"center"}
             alignItems={"center"}
@@ -132,13 +132,9 @@ const Examine = () => {
             size="lg"
             hasStripe={false}
           />
-          <Container
-            bg={"container"}
-            w={"80%"}
-            h={["calc(100vh - 1em)", "calc(100vh - 2em)"]}
-          >
+          <Container bg={"container"} w={"80%"} minH={"100vh"}>
             <Stack
-              height={"100%"}
+              minH={"100vh"}
               justifyContent={"center"}
               alignItems={"center"}
             >

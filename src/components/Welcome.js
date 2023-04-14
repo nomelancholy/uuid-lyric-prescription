@@ -37,12 +37,12 @@ const Welcome = () => {
   }, []);
 
   return (
-    <Box w="100%" h={"100vh"} bg={"box"}>
-      <Container w={"80%"} h={"100%"} bg={"container"}>
+    <Box w="100%" minH={"100vh"} bg={"box"}>
+      <Container w={"80%"} minH={"100vh"} bg={"container"}>
         {isLoading ? (
           <Stack
             width={"100%"}
-            height={"100%"}
+            minH={"100vh"}
             direction="row"
             justifyContent={"center"}
             alignItems={"center"}

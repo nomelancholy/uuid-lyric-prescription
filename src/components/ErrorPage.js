@@ -17,18 +17,18 @@ const ErrorPage = () => {
   };
 
   return (
-    <Box w={"100%"} h={"100vh"} bg={"box"}>
-      <Container w={"80%"} h={"100%"} bg={"container"}>
+    <Box w={"100%"} minH={"100vh"} bg={"box"}>
+      <Container w={"80%"} minH={"100vh"} bg={"container"}>
         <Stack
           width={"100%"}
-          height={"100%"}
+          minH={"100vh"}
           direction="column"
           justifyContent={"center"}
           alignItems={"center"}
           spacing={"20"}
         >
           <Heading size={["sm", "md", "lg"]} color="darkText">
-            <Text textAlign={"center"} pb={"4"}>
+            <Text textAlign={"center"} py={"4"}>
               미안하다
             </Text>
             <Text textAlign={"center"}>
