@@ -17,7 +17,7 @@ import Questions from "../json/Questionnaire.json";
 
 const colorScale = ["#CC3333", "#CC3333", "#757575", "#00B9FC", "#00B9FC"];
 const radioSizeList = ["lg", "md", "sm", "md", "lg"];
-const emojiList = ["🙅‍♂️", "", "", "", "🙆‍♂️"];
+const emojiList = ["비동의", "", "", "", "동의"];
 
 const answers = [
   {
@@ -158,11 +158,11 @@ const Examine = () => {
                       justifyContent={"center"}
                       alignItems={"center"}
                       key={`${nowQuestion.type}-${nowQuestion.id}-${answer.score}`}
+                      px={[1, 2, 3]}
                     >
                       <Radio
                         size={radioSizeList[index]}
                         border={`2px solid ${colorScale[index]}`}
-                        pr={[4, 6, 8]}
                         value={answer.score}
                         onChange={() =>
                           handleAnswer({
@@ -173,10 +173,11 @@ const Examine = () => {
                       />
                       <Text
                         textAlign={"center"}
+                        color={"darkText"}
                         height={"8"}
-                        fontSize={["sm", "md", "lg"]}
-                        pt={4}
-                        pr={[4, 6, 8]}
+                        width={[9, 10]}
+                        fontSize={["xs", "sm"]}
+                        pt={3}
                       >
                         {emojiList[index]}
                       </Text>
