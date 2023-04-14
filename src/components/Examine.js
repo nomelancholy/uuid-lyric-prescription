@@ -15,7 +15,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Questions from "../json/Questionnaire.json";
 
-const colorScale = ["#D01B1B", "#FF4242", "#FFFFFF", "#95D2EC", "#47abd8"];
+const colorScale = ["#CC3333", "#CC3333", "#757575", "#00B9FC", "#00B9FC"];
+const radioSizeList = ["lg", "md", "sm", "md", "lg"];
+const emojiList = ["🙅‍♂️", "", "", "", "🙆‍♂️"];
 
 const answers = [
   {
@@ -151,25 +153,35 @@ const Examine = () => {
 
               <RadioGroup>
                 <Stack direction={"row"}>
-                  <Text fontSize={["3xl", "4xl", "5xl"]} pr={[4, 6, 8]}>
-                    🙅‍♂️
-                  </Text>
                   {answers.map((answer, index) => (
-                    <Radio
-                      size={["sm", "md", "lg"]}
-                      bgColor={colorScale[index]}
-                      pr={[4, 6, 8]}
-                      value={answer.score}
+                    <Stack
+                      justifyContent={"center"}
+                      alignItems={"center"}
                       key={`${nowQuestion.type}-${nowQuestion.id}-${answer.score}`}
-                      onChange={() =>
-                        handleAnswer({
-                          type: nowQuestion.type,
-                          score: answer.score,
-                        })
-                      }
-                    />
+                    >
+                      <Radio
+                        size={radioSizeList[index]}
+                        border={`2px solid ${colorScale[index]}`}
+                        pr={[4, 6, 8]}
+                        value={answer.score}
+                        onChange={() =>
+                          handleAnswer({
+                            type: nowQuestion.type,
+                            score: answer.score,
+                          })
+                        }
+                      />
+                      <Text
+                        textAlign={"center"}
+                        height={"8"}
+                        fontSize={["sm", "md", "lg"]}
+                        pt={4}
+                        pr={[4, 6, 8]}
+                      >
+                        {emojiList[index]}
+                      </Text>
+                    </Stack>
                   ))}
-                  <Text fontSize={["3xl", "4xl", "5xl"]}>🙆‍♂️</Text>
                 </Stack>
               </RadioGroup>
             </Stack>
