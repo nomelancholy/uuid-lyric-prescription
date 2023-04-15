@@ -17,7 +17,7 @@ import Questions from "../json/Questionnaire.json";
 
 const colorScale = ["#CC3333", "#CC3333", "#757575", "#00B9FC", "#00B9FC"];
 const radioSizeList = ["lg", "md", "sm", "md", "lg"];
-const emojiList = ["비동의", "", "", "", "동의"];
+const infoTexts = ["비동의", "", "", "", "동의"];
 
 const answers = [
   {
@@ -175,11 +175,12 @@ const Examine = () => {
                         textAlign={"center"}
                         color={"darkText"}
                         height={"8"}
-                        width={[9, 10]}
-                        fontSize={["xs", "sm"]}
+                        width={9}
+                        fontSize={"xs"}
+                        fontWeight={"bold"}
                         pt={3}
                       >
-                        {emojiList[index]}
+                        {infoTexts[index]}
                       </Text>
                     </Stack>
                   ))}
