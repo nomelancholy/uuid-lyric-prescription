@@ -59,14 +59,14 @@ const Welcome = () => {
           </Stack>
         ) : (
           <>
-            <Img src={uuidCover} px={"1em"} py={["20%", "16%"]} />
+            <Img src={uuidCover} px={"1em"} py={"20%"} />
 
             <Center>
-              <Stack spacing={1} py={["16%", "12%"]} textAlign={"center"}>
+              <Stack spacing={1} pb={"16%"} textAlign={"center"}>
                 <Text fontSize={["md", "2xl"]}>지금 당신에게 필요한</Text>
                 <Text fontSize={["md", "2xl"]}>
                   <Link
-                    href="https://luminant.kr/ICQ671qr_0"
+                    href="https://brunch.co.kr/@takeknowledge/95"
                     color={"box"}
                     isExternal
                   >
@@ -76,7 +76,7 @@ const Welcome = () => {
                 </Text>
               </Stack>
             </Center>
-            <Center paddingY={["8%", "4%"]}>
+            <Center pb={"8%"}>
               <Button
                 bg={"box"}
                 py={["10%", "6%"]}
