@@ -22,11 +22,11 @@ MBTI 테스트 페이지처럼 여러 설문 문항을 만들고 유저가 그�
 
 ### framework
 
-- react
 - chakra
 
 ### library
 
+- react
 - dotenv
 - react share
 - react animated text content
