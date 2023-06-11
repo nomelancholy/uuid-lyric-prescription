@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import uuidCover from "../img/uuid_cover.jpg";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Welcome = () => {
   const naviagte = useNavigate();
@@ -21,19 +21,23 @@ const Welcome = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const imgPreload = () => {
-    const img = new Image();
-    img.src = uuidCover;
+  const setImage = () =>
+    new Promise((resolve) => {
+      const img = new Image();
+      img.src = uuidCover;
+      img.onload = () => {
+        resolve(img);
+      };
+    });
+
+  const imgPreload = async () => {
+    await setImage();
+    setIsLoading(false);
   };
 
-  useLayoutEffect(() => {
-    imgPreload();
-  }, []);
-
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+    imgPreload();
+    // eslint-disable-next-line
   }, []);
 
   return (
