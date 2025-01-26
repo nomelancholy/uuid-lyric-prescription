@@ -10,7 +10,7 @@ MBTI 테스트 페이지처럼 여러 설문 문항을 만들고 유저가 그�
 
 구현에 크게 어려운 부분은 없었지만 의외로 설문 문항을 만드는 데 애를 먹었는데 어쨌든 이렇게 완성해 소개해 드릴 수 있게 되어 기쁘네요
 
-[음악](https://linksalad.net/ICQ671qr_0)도, [홍보 페이지](https://uuid-lyrics-prescription.netlify.app/)도, [제작기](https://brunch.co.kr/@takeknowledge/95)도 재밌게 즐겨주세요!
+[음악](https://luminant.kr/ICQ671qr_0)도, [홍보 페이지](https://uuid-lyrics-prescription.netlify.app/)도, [제작기](https://brunch.co.kr/@takeknowledge/95)도 재밌게 즐겨주세요!
 
 감사합니다! 🙏
 
